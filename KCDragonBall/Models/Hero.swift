@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Hero {
+struct Hero: Codable {
     let id: String
     let name: String
     let favorite: Bool
