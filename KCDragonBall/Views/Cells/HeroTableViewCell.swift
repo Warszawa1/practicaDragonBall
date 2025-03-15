@@ -16,7 +16,6 @@ final class HeroTableViewCell: UITableViewCell {
     
     @IBOutlet var heroImageView: UIImageView!
     @IBOutlet var heroNameLabel: UILabel!
-    
     @IBOutlet var heroDescriptionLabel: UILabel!
     
     

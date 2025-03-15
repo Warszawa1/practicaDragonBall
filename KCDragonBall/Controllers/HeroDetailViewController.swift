@@ -9,11 +9,14 @@ import UIKit
 
 class HeroDetailViewController: UIViewController {
     // MARK: - Outlets
-    @IBOutlet weak var heroImageView: UIImageView!
-    @IBOutlet weak var heroNameLabel: UILabel!
-    @IBOutlet weak var heroDescriptionLabel: UILabel!
     @IBOutlet weak var transformationsButton: UIButton!
+    @IBOutlet weak var heroNameLabel: UILabel!
+    @IBOutlet weak var heroImageView: UIImageView!
     
+    
+    @IBOutlet weak var heroDescriptionLabel: UILabel!
+    
+
     // MARK: - Properties
     private let hero: Hero
     
