@@ -3,8 +3,6 @@ DragonBall Heroes es una aplicación iOS que permite a los usuarios explorar los
 
 ## Screenshots
 
-## Screenshots
-
 <table>
   <tr>
     <td><img src="screenshots/login.png" width="400" alt="Login Screen"><br><em>Login</em></td>
