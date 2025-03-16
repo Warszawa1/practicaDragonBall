@@ -3,26 +3,18 @@ DragonBall Heroes es una aplicación iOS que permite a los usuarios explorar los
 
 ## Screenshots
 
-<div align="center">
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-    <div style="text-align: center; margin: 10px;">
-      <img src="screenshots/login.png" width="230" alt="Login Screen">
-      <p>Login</p>
-    </div>
-    <div style="text-align: center; margin: 10px;">
-      <img src="screenshots/heroes.png" width="230" alt="Heroes List">
-      <p>Lista de heroes</p>
-    </div>
-    <div style="text-align: center; margin: 10px;">
-      <img src="screenshots/detail.png" width="230" alt="Hero Detail">
-      <p>Detalles del heroe</p>
-    </div>
-    <div style="text-align: center; margin: 10px;">
-      <img src="screenshots/transformations.png" width="230" alt="Transformations">
-      <p>Transformaciones</p>
-    </div>
-  </div>
-</div>
+## Screenshots
+
+<table>
+  <tr>
+    <td><img src="screenshots/login.png" width="400" alt="Login Screen"><br><em>Login Screen</em></td>
+    <td><img src="screenshots/heroes.png" width="400" alt="Heroes List"><br><em>Heroes List</em></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/detail.png" width="400" alt="Hero Detail"><br><em>Hero Detail</em></td>
+    <td><img src="screenshots/transformations.png" width="400" alt="Transformations"><br><em>Transformations</em></td>
+  </tr>
+</table>
 
 ## Especificaciones
 - **Credenciales**:
