@@ -39,7 +39,7 @@ class HeroDetailViewController: UIViewController {
     // MARK: - UI Setup
     private func setupUI() {
         title = hero.name
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         
         // Set up scroll view
         view.addSubview(scrollView)
@@ -51,56 +51,63 @@ class HeroDetailViewController: UIViewController {
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        // Set up content view
-        scrollView.addSubview(contentView)
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+        // Create a white card container
+        let cardView = UIView()
+        cardView.backgroundColor = .white
+        cardView.layer.cornerRadius = 5
+        cardView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(cardView)
+        
+        // Set up card view constraints with margins
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+            cardView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20),
+            cardView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
+            cardView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
+            cardView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20),
+            cardView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -40)
         ])
         
-        // Set up image view
-        contentView.addSubview(heroImageView)
+        // Set up image view inside card
+        cardView.addSubview(heroImageView)
         heroImageView.translatesAutoresizingMaskIntoConstraints = false
         heroImageView.contentMode = .scaleAspectFit
         heroImageView.clipsToBounds = true
         NSLayoutConstraint.activate([
-            heroImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            heroImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            heroImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            heroImageView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 0),
+            heroImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
+            heroImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
             heroImageView.heightAnchor.constraint(equalToConstant: 200)
         ])
         
-        // Set up name label
-        contentView.addSubview(nameLabel)
+        // Set up name label inside card
+        cardView.addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.font = UIFont.boldSystemFont(ofSize: 24)
         nameLabel.textAlignment = .center
         nameLabel.numberOfLines = 0
+        nameLabel.textColor = .black
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: heroImageView.bottomAnchor, constant: 20),
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+            nameLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
+            nameLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20)
         ])
         
-        // Set up description label
-        contentView.addSubview(descriptionLabel)
+        // Set up description label inside card
+        cardView.addSubview(descriptionLabel)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.font = UIFont.systemFont(ofSize: 16)
         descriptionLabel.numberOfLines = 0
+        descriptionLabel.textColor = .black
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 16),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+            descriptionLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
+            descriptionLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20)
         ])
         
-        // Set up transformations button
-        contentView.addSubview(transformationsButton)
+        // Set up transformations button inside card
+        cardView.addSubview(transformationsButton)
         transformationsButton.translatesAutoresizingMaskIntoConstraints = false
-        transformationsButton.setTitle("Transformations", for: .normal)
+        transformationsButton.setTitle("Transformaciones", for: .normal)
         transformationsButton.backgroundColor = .systemBlue
         transformationsButton.setTitleColor(.white, for: .normal)
         transformationsButton.layer.cornerRadius = 8
@@ -108,13 +115,12 @@ class HeroDetailViewController: UIViewController {
         transformationsButton.isHidden = true // Hide by default
         NSLayoutConstraint.activate([
             transformationsButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
-            transformationsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            transformationsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            transformationsButton.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
+            transformationsButton.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20),
             transformationsButton.heightAnchor.constraint(equalToConstant: 50),
-            transformationsButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+            transformationsButton.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -20)
         ])
     }
-    
     private func configureWithHero() {
         nameLabel.text = hero.name
         descriptionLabel.text = hero.description

@@ -20,8 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         
         // Set the login view controller as the root
-        let loginVC = createLoginViewController()
-        window.rootViewController = loginVC
+        let splashVC = SplashViewController()
+        window.rootViewController = splashVC
         window.makeKeyAndVisible()
     }
     

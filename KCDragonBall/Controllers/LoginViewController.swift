@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
         emailTextField.backgroundColor = UIColor.darkGray.withAlphaComponent(0.3)
         emailTextField.textColor = .white
         emailTextField.attributedPlaceholder = NSAttributedString(
-            string: "Email",
+            string: "Introduce tu email",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         )
         emailTextField.autocapitalizationType = .none
@@ -55,12 +55,12 @@ class LoginViewController: UIViewController {
         view.addSubview(emailTextField)
         
         // Setup password text field - dark mode style
-        passwordTextField.placeholder = "Password"
+        passwordTextField.placeholder = "Contraseña"
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.backgroundColor = UIColor.darkGray.withAlphaComponent(0.3)
         passwordTextField.textColor = .white
         passwordTextField.attributedPlaceholder = NSAttributedString(
-            string: "Password",
+            string: "Introduce tu contraseña",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         )
         passwordTextField.isSecureTextEntry = true
@@ -68,7 +68,8 @@ class LoginViewController: UIViewController {
         view.addSubview(passwordTextField)
         
         // Setup login button - blue button on dark background
-        loginButton.setTitle("➤ Continuar" , for: .normal)
+        loginButton.setTitle("Continuar  ➭" , for: .normal)
+        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.layer.cornerRadius = 8
         loginButton.translatesAutoresizingMaskIntoConstraints = false
@@ -148,7 +149,7 @@ class LoginViewController: UIViewController {
                     
                 case .failure:
                     // Show error alert
-                    self?.showAlert(title: "Login Failed", message: "Comprueba tus credenciales e inténtalo de nuevo")
+                    self?.showAlert(title: "Login Fail", message: "Comprueba tus credenciales e inténtalo de nuevo")
                 }
             }
         }

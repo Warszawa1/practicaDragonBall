@@ -15,7 +15,8 @@ class HeroesTableViewController: UITableViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Dragon Ball Heroes"
+        title = "Heroes"
+
         setupTableView()
         
         // For development - directly load from API
@@ -38,8 +39,6 @@ class HeroesTableViewController: UITableViewController {
     
     // MARK: - Data Loading
     private func loadHeroes() {
-//        let networkModel = NetworkModel.shared
-        
         DataFetcher.shared.fetchHeroes { [weak self] result in
         
                 switch result {

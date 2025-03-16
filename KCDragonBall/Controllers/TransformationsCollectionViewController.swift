@@ -32,8 +32,8 @@ class TransformationsCollectionViewController: UIViewController, UICollectionVie
     
     // MARK: - Setup
     private func setupCollectionView() {
-        title = "\(hero.name) Transformations"
-        view.backgroundColor = .white
+        title = "\(hero.name) Transformaciones"
+        view.backgroundColor = .black
         
         // Create a flow layout
         let layout = UICollectionViewFlowLayout()
@@ -45,7 +45,7 @@ class TransformationsCollectionViewController: UIViewController, UICollectionVie
         // Create collection view
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .black
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -67,7 +67,7 @@ class TransformationsCollectionViewController: UIViewController, UICollectionVie
                 case .failure:
                     let alert = UIAlertController(
                         title: "Error",
-                        message: "Could not load transformations",
+                        message: "No se han podido cargar las transformationes",
                         preferredStyle: .alert
                     )
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -122,9 +122,9 @@ class TransformationCell: UICollectionViewCell {
     private func setupCell() {
         // Cell styling
         contentView.backgroundColor = .systemBackground
-        contentView.layer.cornerRadius = 8
+        contentView.layer.cornerRadius = 5
         contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.systemGray5.cgColor
+        contentView.layer.borderColor = UIColor.black.cgColor
         
         // Set up scroll view
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -169,7 +169,7 @@ class TransformationCell: UICollectionViewCell {
             contentContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
             // Image view at the top
-            imageView.topAnchor.constraint(equalTo: contentContainer.topAnchor, constant: 8),
+            imageView.topAnchor.constraint(equalTo: contentContainer.topAnchor, constant: 0),
             imageView.leadingAnchor.constraint(equalTo: contentContainer.leadingAnchor, constant: 8),
             imageView.trailingAnchor.constraint(equalTo: contentContainer.trailingAnchor, constant: -8),
             imageView.heightAnchor.constraint(equalToConstant: 120), // Fixed height
