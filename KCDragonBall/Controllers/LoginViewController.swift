@@ -34,11 +34,35 @@ class LoginViewController: UIViewController {
         // Set dark mode background
         view.backgroundColor = .black
         
+        // Add a scroll view to be able to have a functional login in horizontal as well
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(scrollView)
+        
+        // Add a content view inside scroll view
+        let contentView = UIView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(contentView)
+        
+        // Set up scroll view constraints
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+        
         // Setup logo image view
         logoImageView.image = UIImage(named: "boladragon") // The dragon ball with stars
         logoImageView.contentMode = .scaleAspectFit
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(logoImageView)
+        contentView.addSubview(logoImageView)  // Add to contentView instead of view
         
         // Setup email text field - dark mode style
         emailTextField.placeholder = "Email"
@@ -52,7 +76,7 @@ class LoginViewController: UIViewController {
         emailTextField.autocapitalizationType = .none
         emailTextField.autocorrectionType = .no
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(emailTextField)
+        contentView.addSubview(emailTextField)  // Add to contentView instead of view
         
         // Setup password text field - dark mode style
         passwordTextField.placeholder = "Contraseña"
@@ -65,7 +89,7 @@ class LoginViewController: UIViewController {
         )
         passwordTextField.isSecureTextEntry = true
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(passwordTextField)
+        contentView.addSubview(passwordTextField)  // Add to contentView instead of view
         
         // Setup login button - blue button on dark background
         loginButton.setTitle("Continuar" , for: .normal)
@@ -74,27 +98,27 @@ class LoginViewController: UIViewController {
         loginButton.layer.cornerRadius = 8
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        view.addSubview(loginButton)
+        contentView.addSubview(loginButton)  // Add to contentView instead of view
         
         // Setup activity indicator - more visible in dark mode
         activityIndicator.hidesWhenStopped = true
         activityIndicator.color = .white
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.isHidden = true
-        view.addSubview(activityIndicator)
+        contentView.addSubview(activityIndicator)  // Add to contentView instead of view
         
         // Layout constraints - adjusted to move content down and closer together
         NSLayoutConstraint.activate([
             // Logo positioned more down from the top
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 180),
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 180),
+            logoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: 120),
             logoImageView.heightAnchor.constraint(equalToConstant: 120),
             
             // Email field closer to logo
             emailTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
-            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            emailTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            emailTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
             emailTextField.heightAnchor.constraint(equalToConstant: 50),
             
             // Password field closer to email field
@@ -109,8 +133,9 @@ class LoginViewController: UIViewController {
             loginButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor),
             loginButton.heightAnchor.constraint(equalToConstant: 50),
             
-            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20)
+            activityIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            activityIndicator.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
+            activityIndicator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
     }
     
