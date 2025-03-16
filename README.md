@@ -1,6 +1,29 @@
 # DragonBall Heroes
 DragonBall Heroes es una aplicación iOS que permite a los usuarios explorar los personajes del universo Dragon Ball y sus transformaciones. La aplicación consume una API REST para mostrar información sobre los héroes y sus distintas formas.
 
+## Screenshots
+
+<div align="center">
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+    <div style="text-align: center; margin: 10px;">
+      <img src="screenshots/login.png" width="230" alt="Login Screen">
+      <p>Login</p>
+    </div>
+    <div style="text-align: center; margin: 10px;">
+      <img src="screenshots/heroes.png" width="230" alt="Heroes List">
+      <p>Lista de heroes</p>
+    </div>
+    <div style="text-align: center; margin: 10px;">
+      <img src="screenshots/detail.png" width="230" alt="Hero Detail">
+      <p>Detalles del heroe</p>
+    </div>
+    <div style="text-align: center; margin: 10px;">
+      <img src="screenshots/transformations.png" width="230" alt="Transformations">
+      <p>Transformaciones</p>
+    </div>
+  </div>
+</div>
+
 ## Especificaciones
 - **Credenciales**:
   - Email: tu dirección de email
