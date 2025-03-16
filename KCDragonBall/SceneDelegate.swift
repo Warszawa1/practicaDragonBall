@@ -19,59 +19,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        // Login first to get token
-        NetworkModel.shared.login(
-            user: "iantelo@uoc.edu",
-            password: "54321"
-        ) { result in
-            DispatchQueue.main.async {
-                // Create heroes view controller
-                let heroesVC = HeroesTableViewController()
-                let navigationController = UINavigationController(rootViewController: heroesVC)
-                
-                // Set as root view controller
-                window.rootViewController = navigationController
-                window.makeKeyAndVisible()
-                
-                print("Login result: \(result)")
-            }
-        }
+        // Set the login view controller as the root
+        let loginVC = createLoginViewController()
+        window.rootViewController = loginVC
+        window.makeKeyAndVisible()
     }
     
-    private func fetchHeroes() {
-        print("Fetching heroes...")
-        let networkModel = NetworkModel.shared
-        
-        networkModel.getHeros { [weak self] result in
-            switch result {
-            case .success(let heroes):
-                print("Successfully fetched \(heroes.count) heroes:")
-                heroes.forEach { print("- \($0.name)") }
-                
-                // Optionally fetch transformations for Goku
-                if let goku = heroes.first(where: { $0.name == "Goku" }) {
-                    self?.fetchTransformations(for: goku)
-                }
-                
-            case .failure(let error):
-                print("Failed to fetch heroes: \(error)")
-            }
-        }
-    }
-    
-    private func fetchTransformations(for hero: Hero) {
-        print("Fetching transformations for \(hero.name)...")
-        let networkModel = NetworkModel.shared
-        
-        networkModel.getTransformations(for: hero) { result in
-            switch result {
-            case .success(let transformations):
-                print("Successfully fetched \(transformations.count) transformations for \(hero.name):")
-                transformations.forEach { print("- \($0.name)") }
-                
-            case .failure(let error):
-                print("Failed to fetch transformations: \(error)")
-            }
-        }
+    private func createLoginViewController() -> UIViewController {
+        let loginVC = LoginViewController()
+        return loginVC
     }
 }

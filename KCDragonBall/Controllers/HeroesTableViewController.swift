@@ -38,10 +38,10 @@ class HeroesTableViewController: UITableViewController {
     
     // MARK: - Data Loading
     private func loadHeroes() {
-        let networkModel = NetworkModel.shared
+//        let networkModel = NetworkModel.shared
         
-        networkModel.getHeros { [weak self] result in
-            DispatchQueue.main.async {
+        DataFetcher.shared.fetchHeroes { [weak self] result in
+        
                 switch result {
                 case .success(let heroes):
                     self?.heroes = heroes
@@ -50,7 +50,6 @@ class HeroesTableViewController: UITableViewController {
                 case .failure(let error):
                     print("Failed to load heroes: \(error)")
                     // Could show an alert here
-                }
             }
         }
     }
