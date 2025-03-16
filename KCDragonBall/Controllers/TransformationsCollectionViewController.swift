@@ -129,6 +129,7 @@ class TransformationCell: UICollectionViewCell {
         // Set up scroll view
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(scrollView)
+        scrollView.isDirectionalLockEnabled = true
         
         // Set up content container inside scroll view
         contentContainer.translatesAutoresizingMaskIntoConstraints = false

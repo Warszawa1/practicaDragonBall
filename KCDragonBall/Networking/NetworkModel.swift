@@ -20,7 +20,8 @@ final class NetworkModel {
     }
     
     private let client: APIClient
-    private var token: String?
+    // To make it work with the tests, remove private
+    var token: String?
     
     init(client: APIClient) {
         self.client = client

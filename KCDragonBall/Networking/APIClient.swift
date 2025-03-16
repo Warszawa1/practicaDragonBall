@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum APIClientError: Error {
+enum APIClientError: Error, Equatable {
     case malformedURL
     case noData
     case statusCode(code: Int?)

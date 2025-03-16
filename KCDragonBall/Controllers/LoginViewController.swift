@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
         view.addSubview(passwordTextField)
         
         // Setup login button - blue button on dark background
-        loginButton.setTitle("Continuar  ➭" , for: .normal)
+        loginButton.setTitle("Continuar" , for: .normal)
         loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.layer.cornerRadius = 8
@@ -112,10 +112,6 @@ class LoginViewController: UIViewController {
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20)
         ])
-        
-        // Default values for testing (remove in production)
-//        emailTextField.text = "iantelo@uoc.edu"
-//        passwordTextField.text = "54321"
     }
     
     // MARK: - Actions
@@ -147,14 +143,40 @@ class LoginViewController: UIViewController {
                     navController.modalPresentationStyle = .fullScreen
                     self?.present(navController, animated: true)
                     
-                case .failure:
+                case .failure(let error):
                     // Show error alert
-                    self?.showAlert(title: "Login Fail", message: "Comprueba tus credenciales e inténtalo de nuevo")
+                    self?.showAlert(title: "Error de Login", message: error.userMessage)
+                    // Visual feedback
+                    self?.showLoginError()
+                    
+                    // Log detailed error for debugging
+                    print("Login error: \(error)")
                 }
             }
         }
     }
     
+    private func showLoginError() {
+        // Subtle shake animation for the login form
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: .linear)
+        animation.duration = 0.6
+        animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0]
+        loginButton.layer.add(animation, forKey: "shake")
+        
+        // Briefly highlights the fields in red
+        UIView.animate(withDuration: 0.2, animations: {
+            self.emailTextField.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+            self.passwordTextField.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+        }) { _ in
+            UIView.animate(withDuration: 0.2) {
+                self.emailTextField.backgroundColor = UIColor.darkGray.withAlphaComponent(0.3)
+                self.passwordTextField.backgroundColor = UIColor.darkGray.withAlphaComponent(0.3)
+            }
+        }
+    }
+    
+    /// Shows an alert with the given title and message
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(
             title: title,
