@@ -55,7 +55,7 @@ El proyecto está organizado en las siguientes carpetas:
 ## Dificultades Encontradas
 ### Principales Desafíos
 1. **Problemas con XIBs y layouts que llevaron a una UI programática**
-   - Dificultades frustrantes con la conexión de outlets y actions
+   - Dificultades con la conexión de outlets y actions
    - Problemas recurrentes con constraints y layouts inconsistentes
    - Decidí cambiar a un enfoque programático para la UI, resultando en una implementación más predecible
    - **Área de mejora**: Profundizar en el manejo de Auto Layout y constraints para crear interfaces más robustas
@@ -106,6 +106,7 @@ El proyecto está organizado en las siguientes carpetas:
 > - Manejo de estados de UI
 > 
 > ### ✅ *Áreas de Mejora y Aprendizaje*
+> - **BAD TESTING - LOS TEST NO MOCKEAN LAS DEPENDENCIAS Y SE EJECUTAN USANDO LA API REAL, FREAKING TERRIBLE WAY TO WRITE A TEST! 😅
 > - **Testing**: Profundizar en unit testing, mocks y test-driven development
 > - **Layouts y Constraints**: Perfeccionar el uso de Auto Layout para interfaces más robustas
 > - **Gestión de Memoria**: Mejorar el entendimiento de retain cycles y memory management
